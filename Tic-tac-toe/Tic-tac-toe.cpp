@@ -59,3 +59,15 @@ int main() {
 	return 0;
 }
 
+void instructions() {
+	cout << "Welcome to the ultimate man-machine showdown: Tic-Tac-Toe." << endl;
+	cout << "--where human brain is pit against silicon processor\n" << endl;
+	cout << "Make your move known by entering a number, 0 - 8. The number" << endl;
+	cout << "correspondent to the desired board position as illustrated:\n" << endl;
+	cout << " 0 | 1 | 2" << endl;
+	cout << " ---------" << endl;
+	cout << " 3 | 4 | 5" << endl;
+	cout << " ---------" << endl;
+	cout << " 6 | 7 | 8\n" << endl;
+	cout << "Prepare yourself, human. The battle is about to begin.\n" << endl;
+}
