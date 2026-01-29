@@ -115,3 +115,26 @@ void displayBoard(const vector<char>& board) {
 	cout << "\n\n";
 }
 
+char winner(const vector<char>& board) {
+	const int ROWS_COUNT = 8;
+	const int WINNING_ROWS[ROWS_COUNT][3] = {
+		{0, 1, 2},
+		{3, 4, 5},
+		{6, 7, 8},
+		{0, 3, 6},
+		{1, 4, 7},
+		{2, 5, 8},
+		{0, 4, 8},
+		{2, 4, 6}
+	};
+	
+	for (int row = 0; row < ROWS_COUNT; ++row) {
+		if (board[WINNING_ROWS[row][0]] != EMPTY &&
+			board[WINNING_ROWS[row][0]] == board[WINNING_ROWS[row][1]] &&
+			board[WINNING_ROWS[row][1]] == board[WINNING_ROWS[row][2]]) {
+			return board[WINNING_ROWS[row][0]];
+		}
+		else if (count(board.begin(), board.end(), EMPTY) == 0) { return TIE; }
+		return NO_ONE;
+	}
+}
