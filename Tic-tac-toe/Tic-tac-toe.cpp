@@ -89,3 +89,15 @@ int askNumber(string question, int high, int low) {
 	}
 	return number;
 }
+
+char humanPiece() {
+	char go_first = askYesNo("Do you want to do first move?");
+	if (go_first == 'y') {
+		cout << "\nThen take the first move. You will need it." << endl;
+		return X;
+	}
+	else {
+		cout << "\nYour bravery will be your undoing... I will go first." << endl;
+		return O;
+	}
+}
