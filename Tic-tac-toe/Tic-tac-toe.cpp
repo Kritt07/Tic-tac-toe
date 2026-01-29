@@ -1,20 +1,34 @@
-﻿// Tic-tac-toe.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
 
-#include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
-}
+const char X = 'X';
+const char O = 'O';
+const char TIE = 'T';
+const char NO_ONE = 'N';
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+// показ инструкций
+void instructions();
+// задает вопрос да\нет, возвращает символ y или n
+char askYesNo(string question);
+// запрашивает число из диапазона чисел поля
+int askNumber(string question, int high, int low = 0);
+// определяет какими фигурами будет играть игрок, возвращает Y / N
+char humanPiece();
+// дает компьютеру оставшуюся фигуру
+char opponent(char piece);
+// отображает поле
+void displayBoard(const vector<string>& board);
+// определяет победителя, возвращает одну из констант
+char winner(const vector<string>& board);
+// определяет, правильно ли сделан ход
+char islegal(const vector<string>& board, int move);
+// ход пользователя
+int humanMove(const vector<string>& board, char human);
+// ход компьтера
+int computerMove(const vector<string>& board, char computer);
+// оглашает результаты
+void announceWinner(char winner, char computer, char human);
