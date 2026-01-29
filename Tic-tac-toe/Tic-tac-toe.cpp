@@ -71,3 +71,21 @@ void instructions() {
 	cout << " 6 | 7 | 8\n" << endl;
 	cout << "Prepare yourself, human. The battle is about to begin.\n" << endl;
 }
+
+char askYesNo(string question) {
+	char responce;
+	while (responce != 'y' || responce != 'n') {
+		cout << question << " (y/n): ";
+		cin >> responce;
+	}
+	return responce;
+}
+
+int askNumber(string question, int high, int low) {
+	int number;
+	while (number > high || number < low) {
+		cout << question << " (" << low << " - " << high << "): ";
+		cin >> number;
+	}
+	return number;
+}
