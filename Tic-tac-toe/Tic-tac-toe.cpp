@@ -138,3 +138,7 @@ char winner(const vector<char>& board) {
 		return NO_ONE;
 	}
 }
+
+inline bool isLegal(int move, const vector<char>& board) {
+	return (board[move] == EMPTY);
+}
