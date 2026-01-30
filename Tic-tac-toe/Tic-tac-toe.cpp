@@ -74,6 +74,8 @@ void instructions() {
 
 char askYesNo(string question) {
 	char responce;
+	cout << question << " (y/n): ";
+	cin >> responce;
 	while (responce != 'y' || responce != 'n') {
 		cout << question << " (y/n): ";
 		cin >> responce;
@@ -83,6 +85,8 @@ char askYesNo(string question) {
 
 int askNumber(string question, int high, int low) {
 	int number;
+	cout << question << " (" << low << " - " << high << "): ";
+	cin >> number;
 	while (number > high || number < low) {
 		cout << question << " (" << low << " - " << high << "): ";
 		cin >> number;
@@ -144,10 +148,10 @@ inline bool isLegal(int move, const vector<char>& board) {
 }
 
 int humanMove(const vector<char>& board, char human) {
-	int move = askNumber("Where will you move?", board.size() - 1);
+	int move = askNumber("Where will you move?", (board.size() - 1));
 	while (!isLegal(move, board)) {
 		cout << "\nThat square is already occuped, foolish human.\n";
-		move = askNumber("Where will you move?", board.size() - 1);
+		move = askNumber("Where will you move?", (board.size() - 1));
 	}
 	cout << "Fine...\n";
 	return move;
@@ -194,4 +198,8 @@ int computerMove(vector<char> board, char computer) {
 
 	cout << "I shall take square number " << move << endl;
 	return move;
+}
+
+void announceWinner(char winner, char computer, char human) {
+	cout << winner << "'s won!";
 }
