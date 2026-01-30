@@ -76,7 +76,7 @@ char askYesNo(string question) {
 	char responce;
 	cout << question << " (y/n): ";
 	cin >> responce;
-	while (responce != 'y' || responce != 'n') {
+	while (responce != 'y' && responce != 'n') {
 		cout << question << " (y/n): ";
 		cin >> responce;
 	}
@@ -87,7 +87,7 @@ int askNumber(string question, int high, int low) {
 	int number;
 	cout << question << " (" << low << " - " << high << "): ";
 	cin >> number;
-	while (number > high || number < low) {
+	while (number > high && number < low) {
 		cout << question << " (" << low << " - " << high << "): ";
 		cin >> number;
 	}
