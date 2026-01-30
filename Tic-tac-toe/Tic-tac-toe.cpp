@@ -87,7 +87,7 @@ int askNumber(string question, int high, int low) {
 	int number;
 	cout << question << " (" << low << " - " << high << "): ";
 	cin >> number;
-	while (number > high && number < low) {
+	while (number < low || number > high) {
 		cout << question << " (" << low << " - " << high << "): ";
 		cin >> number;
 	}
@@ -120,27 +120,24 @@ void displayBoard(const vector<char>& board) {
 }
 
 char winner(const vector<char>& board) {
-	const int ROWS_COUNT = 8;
-	const int WINNING_ROWS[ROWS_COUNT][3] = {
-		{0, 1, 2},
-		{3, 4, 5},
-		{6, 7, 8},
-		{0, 3, 6},
-		{1, 4, 7},
-		{2, 5, 8},
-		{0, 4, 8},
-		{2, 4, 6}
-	};
-	
-	for (int row = 0; row < ROWS_COUNT; ++row) {
-		if (board[WINNING_ROWS[row][0]] != EMPTY &&
-			board[WINNING_ROWS[row][0]] == board[WINNING_ROWS[row][1]] &&
-			board[WINNING_ROWS[row][1]] == board[WINNING_ROWS[row][2]]) {
-			return board[WINNING_ROWS[row][0]];
-		}
-		else if (count(board.begin(), board.end(), EMPTY) == 0) { return TIE; }
-		return NO_ONE;
-	}
+    const int WINNING_ROWS[8][3] = {
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
+        {0, 4, 8}, {2, 4, 6}
+    };
+
+    for (const auto& row : WINNING_ROWS) {
+        if (board[row[0]] != EMPTY &&
+            board[row[0]] == board[row[1]] &&
+            board[row[1]] == board[row[2]]) {
+            return board[row[0]];
+        }
+    }
+
+    if (count(board.begin(), board.end(), EMPTY) == 0)
+        return TIE;
+
+    return NO_ONE;
 }
 
 inline bool isLegal(int move, const vector<char>& board) {
@@ -201,5 +198,10 @@ int computerMove(vector<char> board, char computer) {
 }
 
 void announceWinner(char winner, char computer, char human) {
-	cout << winner << "'s won!";
+	if (winner == human)
+		cout << "You win! Congratulations!" << endl;
+	else if (winner == computer)
+		cout << "Computer wins! Better luck next time." << endl;
+	else
+		cout << "It's a tie!" << endl;
 }
