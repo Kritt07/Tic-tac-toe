@@ -30,7 +30,7 @@ bool isLegal(int move, const vector<char>* board);
 // ход пользователя
 int humanMove(const vector<char>* board, char human);
 // ход компьютера
-int computerMove(vector<char>* board, char computer);
+int computerMove(const vector<char>* board, char computer);
 // оглашает результаты
 void announceWinner(char winner, char computer, char human);
 
